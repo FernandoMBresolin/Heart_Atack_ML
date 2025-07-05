@@ -1,73 +1,50 @@
-# Como Executar
-Opção 1: Com Docker (Recomendado)
-1. Certifique-se de que o Docker e o Docker Compose estão instalados.
-2. No diretório raiz do projeto (onde está o docker-compose.yml), execute:
-docker-compose up --build
-3. Acesse a API em http://localhost:5000 (redireciona para Swagger).
-4. Para parar:
-docker-compose down
+# Gerenciador de Exames Médicos - Frontend
+### Este é o frontend do projeto Gerenciador de Exames Médicos, uma aplicação web para gerenciar registros de pacientes e prever riscos cardíacos usando uma API REST. A interface permite listar, criar, editar, deletar e prever o risco cardíaco de pacientes.
 
-Opção 2: Localmente
-1. Clone o repositório e entre no diretório backend/:
-cd backend
-2. Crie um ambiente virtual:
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
-3. Instale as dependências:
-pip install -r requirements.txt
-4. Execute a API:
-python app.py
+## Estrutura do Projeto
 
-Execução API
-Para executar a API basta executar no diretório raiz:
+- index.html: Página principal com o formulário e a tabela de pacientes.
+- styles.css: Estilização da interface, incluindo responsividade com media queries.
+- script.js: Lógica JavaScript para interagir com a API (listar pacientes, enviar formulários, realizar predições).
 
-flask run --host 0.0.0.0 --port 5000
-Em modo de desenvolvimento é recomendado executar utilizando o parâmetro reload, que reiniciará o servidor automaticamente após uma mudança no código fonte.
+## Pré-requisitos
 
-flask run --host 0.0.0.0 --port 5000 --reload
+- Um navegador web moderno (Chrome, Firefox, etc.).
+- A API do projeto deve estar rodando em http://localhost:5000 (veja o README da API em ../api/).
+
+## Instalação
+
+- Use um servidor local, como o Live Server no VS Code, ou abra o index.html diretamente no navegador (algumas funcionalidades podem ser limitadas devido a CORS).
 
 
+## Verifique a conexão com a API:
 
-5. Acesse a API em http://localhost:5000/apidocs (redireciona para Swagger).
+- Certifique-se de que a API está rodando
 
-# Endpoints da API
-A API oferece os seguintes endpoints:
 
-- GET /currencies
-  - Retorna a lista de moedas na watchlist.
-  - Resposta: Array de moedas ou {"message": "Nenhuma moeda na lista"}.
-  - Exemplo: [{"code": "USD", "name": "Dólar Americano", "rate": 5.5, "updated_at": "2025-04-12T00:00:00"}]
-- POST /currencies
-  - Adiciona uma nova moeda.
-  - Corpo: {"code": "USD", "name": "Dólar Americano", "rate": null}
-  - Resposta: Moeda adicionada ou erro (400, 409).
-  - Restrição: Apenas códigos permitidos (ex.: USD, EUR, BTC).
-- PUT /currencies/<code>
-  - Atualiza a taxa de uma moeda.
-  - Corpo: {"rate": 5.6}
-  - Resposta: Moeda atualizada ou erro 404.
-- DELETE /currencies/<code>
-  - Remove uma moeda.
-  - Resposta: {"message": "Moeda removida"} ou erro 404.
-Explore todos os endpoints em http://localhost:5000/swagger.
+## Como Usar
 
-# Integração com o Frontend
-- O frontend (rodando em http://localhost:8080) consome esta API para gerenciar a watchlist e atualizar taxas.
-- Certifique-se de que a API está rodando antes de iniciar o frontend.
-- A API suporta CORS, permitindo requisições do frontend.
+- Abra o index.html em um navegador ou use um servidor local.
+- A tabela exibirá todos os pacientes cadastrados na API.
 
-# Banco de Dados
-- Usa SQLite (watchlist.db) para armazenar moedas.
 
-# Desenvolvimento
-- Para adicionar novas moedas permitidas, edite ALLOWED_CURRENCIES em app.py.
-- Para modificar endpoints, edite as classes CurrencyList e CurrencyResource em app.py.
-- Para atualizar a documentação, modifique swagger_config em app.py e rebuild o projeto.
-- Use o Swagger (/swagger) para testar endpoints durante o desenvolvimento.
+##Funcionalidades:
 
-# Problemas Comuns
-- Erro 500 no banco: Verifique se watchlist.db tem permissões de escrita no diretório backend/.
-- CORS bloqueado: Confirme que o frontend está acessando http://127.0.0.1:5000.
-- Swagger não carrega: Certifique-se de que static/swagger.json foi gerado corretamente.
-- Taxas não persistem: Verifique se as chamadas PUT estão atualizando rate e updated_at no banco.
+- Listar pacientes: A tabela mostra todos os pacientes com colunas como ID, idade, sexo, etc.
+- Adicionar paciente: Preencha o formulário e clique em "Cadastrar".
+- Editar paciente: Clique em "Editar" na tabela, preencha o formulário e envie.
+- Deletar paciente: Clique em "Deletar" na tabela.
+- Prever risco cardíaco: Clique em "Prever" para calcular o risco (0 = sem risco, 1 = com risco) usando o modelo de machine learning.
+
+
+## Configuração do Ambiente
+
+- Dependências: Nenhuma dependência externa é necessária, pois o frontend usa apenas HTML, CSS e JavaScript puro.
+- Responsividade: O CSS inclui media queries para telas menores (ex.: tablets e celulares), ajustando o layout da tabela e formulário.
+
+
+## Resolução de Problemas
+
+- Erro de CORS: Verifique se a API está rodando e se o CORS(app) está configurado em app.py.
+- Tabela vazia: Confirme que a API está retornando dados em http://localhost:5000/api/patients.
+- Mensagens de erro em inglês: Certifique-se de que o backend retorna mensagens em português (definidas em schema.py).
