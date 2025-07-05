@@ -13,10 +13,6 @@ Um navegador web moderno (Chrome, Firefox, etc.).
 A API do projeto deve estar rodando em http://localhost:5000 (veja o README da API em ../api/).
 
 
-## Instalação
-Navegue até a pasta do frontend:
-
-
 ## Hospede os arquivos localmente:
 Use um servidor local, como o Live Server no VS Code, ou abra o index.html diretamente no navegador (algumas funcionalidades podem ser limitadas devido a CORS).
 
