@@ -1,0 +1,284 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API de Exames Médicos",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/patients": {
+      "get": {
+        "summary": "Obtém a lista completa de pacientes",
+        "tags": ["Patients"],
+        "responses": {
+          "200": {
+            "description": "Lista de pacientes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Patient" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cria um novo registro de paciente",
+        "tags": ["Patients"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PatientInput" }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": { "$ref": "#/components/schemas/PatientInput" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Paciente criado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Patient" }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro de validação",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "object",
+                      "example": {
+                        "idade": "Idade deve estar entre 1 e 120 anos.",
+                        "resting_bp": "Pressão arterial não pode ser 0."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/patients/{patient_id}": {
+      "get": {
+        "summary": "Busca um paciente pelo ID",
+        "tags": ["Patients"],
+        "parameters": [
+          {
+            "name": "patient_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" },
+            "description": "ID do paciente"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paciente encontrado",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Patient" }
+              }
+            }
+          },
+          "404": {
+            "description": "Paciente não encontrado"
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza um registro de paciente",
+        "tags": ["Patients"],
+        "parameters": [
+          {
+            "name": "patient_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "example": 1 },
+            "description": "ID do paciente"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PatientInput" }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": { "$ref": "#/components/schemas/PatientInput" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Paciente atualizado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Patient" }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro de validação",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "object",
+                      "example": {
+                        "idade": "Idade deve estar entre 1 e 120 anos."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Paciente não encontrado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta um registro de paciente",
+        "tags": ["Patients"],
+        "parameters": [
+          {
+            "name": "patient_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "example": 1 },
+            "description": "ID do paciente"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paciente deletado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Paciente deletado" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Paciente não encontrado"
+          }
+        }
+      }
+    },
+    "/api/patients/{patient_id}/predict": {
+      "post": {
+        "summary": "Calcula o risco cardíaco de um paciente",
+        "tags": ["Patients"],
+        "parameters": [
+          {
+            "name": "patient_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "example": 1 },
+            "description": "ID do paciente"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Previsão de risco cardíaco realizada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Previsão de risco cardíaco realizada com sucesso" },
+                    "heart_disease": { "type": "integer", "enum": [0, 1], "example": 0 },
+                    "patient": { "$ref": "#/components/schemas/Patient" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Paciente não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string", "example": "Paciente não encontrado" }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno no servidor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string", "example": "Modelo BEST_model.pkl não encontrado" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Patient": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "example": 1 },
+          "idade": { "type": "integer", "example": 45 },
+          "sexo": { "type": "string", "enum": ["M", "F"], "example": "M" },
+          "chest_pain_type": { "type": "string", "enum": ["ATA", "NAP", "ASY", "TA"], "example": "ATA" },
+          "resting_bp": { "type": "integer", "example": 120 },
+          "cholesterol": { "type": "integer", "example": 200 },
+          "fasting_bs": { "type": "integer", "enum": [0, 1], "example": 0 },
+          "resting_ecg": { "type": "string", "enum": ["Normal", "ST", "LVH"], "example": "Normal" },
+          "max_hr": { "type": "integer", "example": 150 },
+          "exercise_angina": { "type": "string", "enum": ["Y", "N"], "example": "N" },
+          "oldpeak": { "type": "number", "example": 1.5 },
+          "st_slope": { "type": "string", "enum": ["Up", "Flat", "Down"], "example": "Up" },
+          "heart_disease": { "type": "integer", "enum": [0, 1], "nullable": true }
+        },
+        "required": ["id", "idade", "sexo", "chest_pain_type", "resting_bp", "cholesterol", "fasting_bs", "resting_ecg", "max_hr", "exercise_angina", "oldpeak", "st_slope"]
+      },
+      "PatientInput": {
+        "type": "object",
+        "properties": {
+          "idade": { "type": "integer", "example": 45 },
+          "sexo": { "type": "string", "enum": ["M", "F"], "example": "M" },
+          "chest_pain_type": { "type": "string", "enum": ["ATA", "NAP", "ASY", "TA"], "example": "ATA" },
+          "resting_bp": { "type": "integer", "example": 120 },
+          "cholesterol": { "type": "integer", "example": 200 },
+          "fasting_bs": { "type": "integer", "enum": [0, 1], "example": 0 },
+          "resting_ecg": { "type": "string", "enum": ["Normal", "ST", "LVH"], "example": "Normal" },
+          "max_hr": { "type": "integer", "example": 150 },
+          "exercise_angina": { "type": "string", "enum": ["Y", "N"], "example": "N" },
+          "oldpeak": { "type": "number", "example": 1.5 },
+          "st_slope": { "type": "string", "enum": ["Up", "Flat", "Down"], "example": "Up" }
+        },
+        "required": ["idade", "sexo", "chest_pain_type", "resting_bp", "cholesterol", "fasting_bs", "resting_ecg", "max_hr", "exercise_angina", "oldpeak", "st_slope"]
+      }
+    }
+  }
+}

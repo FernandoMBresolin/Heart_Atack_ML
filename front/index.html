@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Exames Médicos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gerenciador de Exames Médicos</h1>
+        <div>
+            <h2>Adicionar/Atualizar Paciente</h2>
+            <form id="patientForm" novalidate>
+                <input type="hidden" id="patientId">
+                <label for="idade">Idade do paciente:</label>
+                <input type="number" id="idade" required min="1" max="120">
+                <label for="sexo">Sexo do paciente:</label>
+                <select id="sexo" required>
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+                <label for="chest_pain_type">Tipo de Dor Torácica:</label>
+                <select id="chest_pain_type" required>
+                    <option value="ATA">ATA - Angina Atípica</option>
+                    <option value="NAP">NAP - Dor Não Anginosa</option>
+                    <option value="ASY">ASY - Assintomático</option>
+                    <option value="TA">TA - Angina Típica</option>
+                </select>
+                <label for="resting_bp">Pressão arterial em repouso (50 a 250 mmHg):</label>
+                <input type="number" id="resting_bp" required min="50" max="250">
+                <label for="cholesterol">Nível de colesterol (30 a 600 mg/dl):</label>
+                <input type="number" id="cholesterol" required min="30" max="600">
+                <label for="fasting_bs">Glicemia em jejum:</label>
+                <select id="fasting_bs" required>
+                    <option value="0" selected>0 (normal)</option>
+                    <option value="1">1 (elevada > 120 mg/dl)</option>
+                </select>
+                <label for="resting_ecg">ECG em Repouso:</label>
+                <select id="resting_ecg" required>
+                    <option value="Normal">Normal</option>
+                    <option value="ST">ST - Anormalidade da onda ST-T</option>
+                    <option value="LVH">LVH - Hipertrofia Ventricular Esquerda</option>
+                </select>
+                <label for="max_hr">Frequência cardíaca (40 a 220):</label>
+                <input type="number" id="max_hr" required min="40" max="220">
+                <label for="exercise_angina">Angina induzida por exercício:</label>
+                <select id="exercise_angina" required>
+                    <option value="Y">Sim</option>
+                    <option value="N">Não</option>
+                </select>
+                <label for="oldpeak">Depressão ST (Oldpeak):</label>
+                <input type="number" id="oldpeak" step="0.1" required min="-5.0" max="10.0">
+                <label for="st_slope">Inclinação ST:</label>
+                <select id="st_slope" required>
+                    <option value="Up">Up - Ascendente</option>
+                    <option value="Flat">Flat - Plano</option>
+                    <option value="Down">Down - Descendente</option>
+                </select>
+                <button type="submit">Salvar</button>
+            </form>
+        </div>
+        <div>
+            <h2>Registros de Pacientes</h2>
+            <table aria-live="polite">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Idade</th>
+                        <th>Sexo</th>
+                        <th>Dor Torácica</th>
+                        <th>Pressão Arterial</th>
+                        <th>Colesterol</th>
+                        <th>Glicemia</th>
+                        <th>ECG</th>
+                        <th>Freq. Cardíaca</th>
+                        <th>Angina</th>
+                        <th>Oldpeak</th>
+                        <th>Inclinação ST</th>
+                        <th>Risco Cardíaco</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="patientList"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
