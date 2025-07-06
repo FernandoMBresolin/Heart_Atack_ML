@@ -6,4 +6,4 @@
 
 - API: Gerencia dados de pacientes e predições, com documentação interativa via Swagger UI.
 - Frontend: Interface web para visualizar, adicionar, editar, deletar pacientes e calcular riscos cardíacos.
-- Machine Learning: O modelo é treinado com cinco algoritmos (Regressão Logística, KNN, Árvore de Decisão, Naive Bayes, SVM), otimizado com GridSearchCV, e salvo para uso na API. A acurácia esperada no conjunto de teste é de ~85-88%.
+- Machine Learning: O modelo é treinado com cinco algoritmos (Regressão Logística, KNN, Árvore de Decisão, Naive Bayes, SVM), otimizado com GridSearchCV, e salvo para uso na API.
