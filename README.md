@@ -7,3 +7,8 @@
 - API: Gerencia dados de pacientes e predições, com documentação interativa via Swagger UI.
 - Frontend: Interface web para visualizar, adicionar, editar, deletar pacientes e calcular riscos cardíacos.
 - Machine Learning: O modelo é treinado com cinco algoritmos (Regressão Logística, KNN, Árvore de Decisão, Naive Bayes, SVM), otimizado com GridSearchCV, e salvo para uso na API.
+
+## Sobre o Machine Learning:
+
+- Modelo treinado no google colab
+- Dataset utilizado: https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction
