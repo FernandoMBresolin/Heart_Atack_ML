@@ -7,11 +7,6 @@
 - styles.css: Estilização da interface, incluindo responsividade com media queries.
 - script.js: Lógica JavaScript para interagir com a API (listar pacientes, enviar formulários, realizar predições).
 
-## Pré-requisitos
-
-- Um navegador web moderno (Chrome, Firefox, etc.).
-- A API do projeto deve estar rodando em http://localhost:5500 (veja o README da API em ../api/).
-
 ## Como Usar
 
 - Use um servidor local, como o Live Server no VS Code, ou abra o index.html diretamente no navegador (algumas funcionalidades podem ser limitadas devido a CORS).
