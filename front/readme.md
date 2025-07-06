@@ -10,7 +10,7 @@
 ## Pré-requisitos
 
 - Um navegador web moderno (Chrome, Firefox, etc.).
-- A API do projeto deve estar rodando em http://localhost:5000 (veja o README da API em ../api/).
+- A API do projeto deve estar rodando em http://localhost:5500 (veja o README da API em ../api/).
 
 ## Como Usar
 
@@ -37,5 +37,3 @@
 ## Resolução de Problemas
 
 - Erro de CORS: Verifique se a API está rodando e se o CORS(app) está configurado em app.py.
-- Tabela vazia: Confirme que a API está retornando dados em http://localhost:5000/api/patients.
-- Mensagens de erro em inglês: Certifique-se de que o backend retorna mensagens em português (definidas em schema.py).
