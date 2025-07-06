@@ -12,19 +12,10 @@
 - Um navegador web moderno (Chrome, Firefox, etc.).
 - A API do projeto deve estar rodando em http://localhost:5000 (veja o README da API em ../api/).
 
-## Instalação
-
-- Use um servidor local, como o Live Server no VS Code, ou abra o index.html diretamente no navegador (algumas funcionalidades podem ser limitadas devido a CORS).
-
-
-## Verifique a conexão com a API:
-
-- Certifique-se de que a API está rodando
-
-
 ## Como Usar
 
-- Abra o index.html em um navegador ou use um servidor local.
+- Use um servidor local, como o Live Server no VS Code, ou abra o index.html diretamente no navegador (algumas funcionalidades podem ser limitadas devido a CORS).
+- Certifique-se de que a API está rodando
 - A tabela exibirá todos os pacientes cadastrados na API.
 
 
