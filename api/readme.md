@@ -49,7 +49,7 @@ flask run --host 0.0.0.0 --port 5000 --reload
 ## Testes unitários
 - Uso do pytest para executar os testes
 - - test_api.py para testes dos endpoints da api
-- - test_model para teste de acurácia do modelo exportado Best_model.pkl
+- - test_model avalia o desempenho do modelo KNN otimizado (BEST_model.pkl) no conjunto de teste
 
 ## Endpoints
 
