@@ -31,7 +31,7 @@
 - Dependências listadas em requirements.txt
 - Recomendado o uso de um abiente virtual 
 
-## Como Executar
+## Como executar a API
 1. Clone o repositório e entre no diretório api/:
 2. Crie um ambiente virtual:
 - python -m venv venv
@@ -45,6 +45,11 @@ flask run --host 0.0.0.0 --port 5000
 - Em modo de desenvolvimento é recomendado executar utilizando o parâmetro reload, que reiniciará o servidor automaticamente após uma mudança no código fonte.
 flask run --host 0.0.0.0 --port 5000 --reload
 5. Acesse a API em http://localhost:5000/apidocs (redireciona para Swagger).
+
+## Testes unitários
+- Uso do pytest para executar os testes
+- - test_api.py para testes dos endpoints da api
+- - test_model para teste de acurácia do modelo exportado Best_model.pkl
 
 ## Endpoints
 
