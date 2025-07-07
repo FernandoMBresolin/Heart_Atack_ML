@@ -5,7 +5,6 @@
 ## Módulos principais:
 
 ### API: 
-- Construída com Flask e SQLite.
 - Permite criar, listar, atualizar, deletar pacientes e realizar predições de risco cardíaco.
 - Documentação interativa via Swagger UI.
 
