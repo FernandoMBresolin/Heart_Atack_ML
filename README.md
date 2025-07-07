@@ -1,11 +1,16 @@
 # Gerenciador de Exames Médicos
 
-### Bem-vindo ao Gerenciador de Exames Médicos, um projeto que combina uma API RESTful e uma interface web para gerenciar registros de pacientes e prever riscos cardíacos usando um modelo de machine learning. A API, construída com Flask e SQLite, permite criar, listar, atualizar, deletar pacientes e realizar predições de risco cardíaco. O frontend, desenvolvido com HTML, CSS e JavaScript, oferece uma interface amigável para interagir com a API.
+### Bem-vindo ao Gerenciador de Exames Médicos, um projeto que combina uma API RESTful e uma interface web para gerenciar registros de pacientes e prever riscos cardíacos usando um modelo de machine learning. 
 
 ## Módulos principais:
 
-- API: Gerencia dados de pacientes e predições, com documentação interativa via Swagger UI.
-- Frontend: Interface web para visualizar, adicionar, editar, deletar pacientes e calcular riscos cardíacos.
+### API: 
+- Construída com Flask e SQLite.
+- Permite criar, listar, atualizar, deletar pacientes e realizar predições de risco cardíaco.
+- Documentação interativa via Swagger UI.
+
+### Frontend
+- Desenvolvido com HTML, CSS e JavaScript, oferece uma interface amigável para interagir com a API
 
 ## Sobre o Machine Learning:
 
