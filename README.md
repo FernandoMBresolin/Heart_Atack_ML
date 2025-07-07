@@ -9,5 +9,5 @@
 
 ## Sobre o Machine Learning:
 
-- Modelo treinado no google colab, notebook explicativo no diretorio api/MachineLearning
+- Modelo treinado no google colab, notebook explicativo [no diretorio api/MachineLearning](https://github.com/FernandoMBresolin/Heart_Atack_ML/tree/main/api/MachineLearning)
 - Dataset utilizado: https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction
